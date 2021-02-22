@@ -1,0 +1,11 @@
+{
+  "name": "hoadinhquoc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/hoadinhquoc/hoadinhquoc.github.io.git",
+  "author": "hoa.dinhquoc <hoa.dinhquoc@gameloft.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react-bootstrap": "^1.5.0"
+  }
+}
