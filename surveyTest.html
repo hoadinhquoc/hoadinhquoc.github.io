@@ -13,12 +13,14 @@
         function CloseSurvey()
         {
             alert("CloseSurvey");
-            Unity.call("CloseSurvey");
+            if(!Unity)
+                Unity.call("CloseSurvey");
         }
         function OpenExternalPage()
         {
             alert("OpenExternalPage");
-            Unity.call("OpenExternalPage");
+            if(!Unity)
+                Unity.call("OpenExternalPage");
         }
     </script>
 </body>
