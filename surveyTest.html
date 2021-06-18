@@ -13,13 +13,21 @@
         function CloseSurvey()
         {
             alert("CloseSurvey");
-            if(Unity)
+            if (typeof Unity === 'undefined' || Unity === null)
+            {
+
+            }
+            else
                 Unity.call("CloseSurvey");
         }
         function OpenExternalPage()
         {
             alert("OpenExternalPage");
-            if(Unity)
+            if (typeof Unity === 'undefined' || Unity === null)
+            {
+
+            }
+            else
                 Unity.call("OpenExternalPage");
         }
     </script>
