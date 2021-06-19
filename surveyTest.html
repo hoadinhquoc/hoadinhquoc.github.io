@@ -15,12 +15,13 @@
         function CloseSurvey()
         {
             alert("CloseSurvey");
+            let data = {"type":"CloseSurvey"};
             if (typeof Unity === 'undefined' || Unity === null)
             {
 
             }
             else
-                Unity.call('{"type" : "CloseSurvey"}');
+                Unity.call(JSON.stringify(data));
         }
         function OpenExternalPage()
         {
@@ -30,7 +31,11 @@
 
             }
             else
-                Unity.call('{"type": "OpenExternalPage", "url": "https://gamek.vn"}');
+            {
+                let data = {"type":"OpenExternalPage", "url": "https://gamek.vn"};
+                Unity.call(JSON.stringify(data));
+            }
+                
         }
         function CallFromUnity(msg)
         {
