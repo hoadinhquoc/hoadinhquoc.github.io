@@ -20,7 +20,7 @@
 
             }
             else
-                Unity.call("CloseSurvey");
+                Unity.call("{'type' : 'CloseSurvey'}");
         }
         function OpenExternalPage()
         {
@@ -30,11 +30,11 @@
 
             }
             else
-                Unity.call("OpenExternalPage");
+                Unity.call("{'type' : 'OpenExternalPage'}, 'url': 'https://gamek.vn'}");
         }
         function CallFromUnity(msg)
         {
-            alert("CallFromUnity " + msg);
+            //alert("CallFromUnity " + msg);
             document.getElementById("anon").innerHTML = msg;
         }
     </script>
