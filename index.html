@@ -11,11 +11,15 @@
         <p id="anon">Hello</p>
     </div>
     <div class="w3-container w3-center">
-        <button class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey w3-round-xlarge" onclick=CloseSurvey() style="font-weight:900;">Close webview</button>
+        <button id="close-btn" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey w3-round-xlarge" style="font-weight:900;">Close webview</button>
     </div>
-    </br>   
+    </br> 
     <div class="w3-container w3-center">
-        <button class="w3-btn w3-xlarge w3-yellow w3-hover-light-grey w3-round-xlarge"  onclick=OpenExternalPage() style="font-weight:900;">Open external page</button>
+        <button id="finish-survey-btn" class="w3-btn w3-xlarge w3-yellow w3-hover-light-grey w3-round-xlarge" style="font-weight:900;">Finish Survey</button>
+    </div>
+    </br>  
+    <div class="w3-container w3-center">
+        <button id="open-external-btn" class="w3-btn w3-xlarge w3-yellow w3-hover-light-grey w3-round-xlarge" style="font-weight:900;">Open external page</button>
     </div>
     </br>
     <form class="w3-container">
@@ -31,9 +35,14 @@
 
 
     <script>
+        document.getElementById("close-btn").addEventListener("click", CloseSurvey, false);
+        document.getElementById("finish-survey-btn").addEventListener("click", FinishSurvey, false);
+        document.getElementById("open-external-btn").addEventListener("click", OpenExternalPage, false);
+
         function CloseSurvey()
         {
-            alert("CloseSurvey");
+            //alert("CloseSurvey");
+            console.log("CloseSurvey");
             if (typeof Unity === 'undefined' || Unity === null)
             {
 
@@ -45,9 +54,24 @@
             }
                 
         }
+        function FinishSurvey()
+        {
+            console.log("FinishSurvey");
+            if (typeof Unity === 'undefined' || Unity === null)
+            {
+
+            }
+            else
+            {
+                let data = {"type":"FinishSurvey"};
+                Unity.call(JSON.stringify(data));
+            }
+                
+        }
         function OpenExternalPage()
         {
-            alert("OpenExternalPage");
+            //alert("OpenExternalPage");
+            console.log("OpenExternalPage");
             if (typeof Unity === 'undefined' || Unity === null)
             {
 
