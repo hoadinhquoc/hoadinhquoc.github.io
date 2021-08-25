@@ -54,7 +54,6 @@
 
 
     <script>
-        var isInAppSurvey = false;
         document.getElementById("close-btn").addEventListener("click", CloseSurvey, false);
         document.getElementById("finish-survey-btn").addEventListener("click", FinishSurvey, false);
         document.getElementById("open-external-btn").addEventListener("click", ()=>{OpenExternalPage("https://www.ox.ac.uk")}, false);
@@ -62,7 +61,7 @@
         function CloseSurvey() {
             console.log("CloseSurvey");
 
-            if(isInAppSurvey){
+            if(window.isInAppSurvey){
                 let data = { "type": "CloseSurvey" };
                 Unity.call(JSON.stringify(data));
             }
@@ -74,7 +73,7 @@
         function FinishSurvey() {
             console.log("FinishSurvey");
 
-            if(isInAppSurvey){
+            if(window.isInAppSurvey){
                 let data = { "type": "FinishSurvey" };
                 Unity.call(JSON.stringify(data));
             }
@@ -85,7 +84,7 @@
         }
         function OpenExternalPage(url) {
             console.log("OpenExternalPage " + url);
-            if(isInAppSurvey){
+            if(window.isInAppSurvey){
                 let data = { "type": "OpenExternalPage", "url": url };
                 Unity.call(JSON.stringify(data));
             }
@@ -104,7 +103,7 @@
             }
         }
         function CallFromUnity(msg) {
-            isInAppSurvey = true;
+            window.isInAppSurvey = true;
         }
     </script>
 </body>
