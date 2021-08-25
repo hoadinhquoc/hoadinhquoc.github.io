@@ -6,30 +6,49 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<script>
+    if (window && window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.unityControl) {
+        window.Unity = {
+            call: function (msg) {
+                window.webkit.messageHandlers.unityControl.postMessage(msg);
+            }
+        }
+    } else {
+        window.Unity = {
+            call: function (msg) {
+                window.location = 'unity:' + msg;
+            }
+        }
+    }
+</script>
+
 <body>
     <div class="w3-container w3-center">
         <p id="anon">Hello</p>
     </div>
     <div class="w3-container w3-center">
-        <button id="close-btn" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey w3-round-xlarge" style="font-weight:900;">Close webview</button>
+        <button id="close-btn" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey w3-round-xlarge"
+            style="font-weight:900;">Close webview</button>
     </div>
-    </br> 
+    </br>
     <div class="w3-container w3-center">
-        <button id="finish-survey-btn" class="w3-btn w3-xlarge w3-yellow w3-hover-light-grey w3-round-xlarge" style="font-weight:900;">Finish Survey</button>
+        <button id="finish-survey-btn" class="w3-btn w3-xlarge w3-yellow w3-hover-light-grey w3-round-xlarge"
+            style="font-weight:900;">Finish Survey</button>
     </div>
-    </br>  
+    </br>
     <div class="w3-container w3-center">
-        <button id="open-external-btn" class="w3-btn w3-xlarge w3-yellow w3-hover-light-grey w3-round-xlarge" style="font-weight:900;">Open external page</button>
+        <button id="open-external-btn" class="w3-btn w3-xlarge w3-yellow w3-hover-light-grey w3-round-xlarge"
+            style="font-weight:900;">Open external page</button>
     </div>
     </br>
     <form class="w3-container">
 
         <label>First Name</label>
         <input class="w3-input" type="text">
-        
+
         <label>Last Name</label>
         <input class="w3-input" type="text">
-        
+
     </form>
 
 
@@ -39,56 +58,46 @@
         document.getElementById("finish-survey-btn").addEventListener("click", FinishSurvey, false);
         document.getElementById("open-external-btn").addEventListener("click", OpenExternalPage, false);
 
-        function CloseSurvey()
-        {
+        function CloseSurvey() {
             //alert("CloseSurvey");
             console.log("CloseSurvey");
-            if (typeof Unity === 'undefined' || Unity === null)
-            {
+            if (typeof Unity === 'undefined' || Unity === null) {
 
             }
-            else
-            {
-                let data = {"type":"CloseSurvey"};
+            else {
+                let data = { "type": "CloseSurvey" };
                 Unity.call(JSON.stringify(data));
             }
-                
+
         }
-        function FinishSurvey()
-        {
+        function FinishSurvey() {
             console.log("FinishSurvey");
-            if (typeof Unity === 'undefined' || Unity === null)
-            {
+            if (typeof Unity === 'undefined' || Unity === null) {
 
             }
-            else
-            {
-                let data = {"type":"FinishSurvey"};
+            else {
+                let data = { "type": "FinishSurvey" };
                 Unity.call(JSON.stringify(data));
             }
-                
+
         }
-        function OpenExternalPage()
-        {
+        function OpenExternalPage() {
             //alert("OpenExternalPage");
             console.log("OpenExternalPage");
-            if (typeof Unity === 'undefined' || Unity === null)
-            {
+            if (typeof Unity === 'undefined' || Unity === null) {
 
             }
-            else
-            {
-                let data = {"type":"OpenExternalPage", "url": "https://gamek.vn"};
+            else {
+                let data = { "type": "OpenExternalPage", "url": "https://gamek.vn" };
                 Unity.call(JSON.stringify(data));
             }
-                
+
         }
-        function CallFromUnity(msg)
-        {
+        function CallFromUnity(msg) {
             //alert("CallFromUnity " + msg);
             document.getElementById("anon").innerHTML = "Hello " + msg;
         }
     </script>
 </body>
-</html>
 
+</html>
