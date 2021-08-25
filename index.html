@@ -54,45 +54,57 @@
 
 
     <script>
+        var isInAppSurvey = false;
         document.getElementById("close-btn").addEventListener("click", CloseSurvey, false);
         document.getElementById("finish-survey-btn").addEventListener("click", FinishSurvey, false);
-        document.getElementById("open-external-btn").addEventListener("click", OpenExternalPage, false);
+        document.getElementById("open-external-btn").addEventListener("click", ()=>{OpenExternalPage("https://www.ox.ac.uk")}, false);
 
         function CloseSurvey() {
             console.log("CloseSurvey");
-            if (typeof Unity === 'undefined' || Unity === null) {
 
-            }
-            else {
+            if(isInAppSurvey){
                 let data = { "type": "CloseSurvey" };
                 Unity.call(JSON.stringify(data));
             }
-
+            else{
+                //todo
+                console.log("CloseSurvey in Browser");
+            }
         }
         function FinishSurvey() {
             console.log("FinishSurvey");
-            if (typeof Unity === 'undefined' || Unity === null) {
 
-            }
-            else {
+            if(isInAppSurvey){
                 let data = { "type": "FinishSurvey" };
                 Unity.call(JSON.stringify(data));
             }
-
+            else{
+                //todo
+                console.log("FinishSurvey in Browser");
+            }
         }
-        function OpenExternalPage() {
-            console.log("OpenExternalPage");
+        function OpenExternalPage(url) {
+            console.log("OpenExternalPage " + url);
+            if(isInAppSurvey){
+                let data = { "type": "OpenExternalPage", "url": url };
+                Unity.call(JSON.stringify(data));
+            }
+            else{
+                //todo: open url in browser
+                window.open(url, '_blank');
+            }
+            
+        }
+        function callInAppFunc(data){
             if (typeof Unity === 'undefined' || Unity === null) {
 
             }
             else {
-                let data = { "type": "OpenExternalPage", "url": "https://www.ox.ac.uk" };
                 Unity.call(JSON.stringify(data));
             }
-
         }
         function CallFromUnity(msg) {
-            document.getElementById("anon").innerHTML = "Hello " + msg;
+            isInAppSurvey = true;
         }
     </script>
 </body>
